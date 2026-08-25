@@ -2,65 +2,113 @@
 
 > **Know Your Attack Surface. Before Attackers Do.**
 
-Aegis is an AI-assisted cybersecurity investigation platform that automates website security assessments using industry-standard security tools while transforming technical findings into understandable, actionable intelligence.
+Aegis is a cybersecurity investigation platform that helps users assess the security of websites using common security tools and AI.
 
-Instead of presenting raw scanner outputs, Aegis guides users through an interactive investigation where vulnerabilities are discovered, explained, and remediated through a modern SaaS experience.
+The idea is simple: instead of having to run different tools separately and then figure out what all the output means, Aegis puts the process into one investigation workflow. It collects the results, keeps track of what was checked, and uses a local LLM to explain the findings in simpler terms.
 
----
-
-# ✨ Features
-
-* Interactive website security investigations
-* AI-assisted vulnerability explanations
-* Investigation timeline with live progress
-* Technology fingerprinting
-* Content discovery
-* Professional security reports
-* Educational Learning Mode
-* Investigation history
-* Modular architecture for future expansion
+The goal is to make security testing easier to understand without hiding the technical details.
 
 ---
 
-# 🔍 Investigation Workflow
+## What Aegis Does
 
-```
+A typical investigation goes through a few stages:
+
+* Website reconnaissance
+* Technology detection
+* Content and directory discovery
+* Vulnerability scanning
+* Evidence collection
+* AI-assisted analysis
+* Report generation
+
+The results are shown through a dashboard where you can follow the investigation and review individual findings.
+
+---
+
+## Investigation Flow
+
+```text
 Create Project
-        │
-        ▼
+      ↓
 Add Target
-        │
-        ▼
-Select Investigation Profile
-        │
-        ▼
+      ↓
+Choose Investigation Profile
+      ↓
 Start Investigation
-        │
-        ▼
+      ↓
 Reconnaissance
-        │
-        ▼
-Technology Fingerprinting
-        │
-        ▼
+      ↓
+Technology Detection
+      ↓
 Content Discovery
-        │
-        ▼
+      ↓
 Vulnerability Assessment
-        │
-        ▼
+      ↓
 Evidence Collection
-        │
-        ▼
-AI Intelligence
-        │
-        ▼
+      ↓
+AI Analysis
+      ↓
 Generate Report
 ```
 
 ---
 
-# 🛠️ Technology Stack
+## Features
+
+### 🔎 Website Investigations
+
+Create an investigation for a website and run a predefined set of security checks against it.
+
+### 📡 Reconnaissance
+
+Collect basic information about the target using tools such as Nmap and WhatWeb.
+
+### 🧩 Technology Fingerprinting
+
+Identify technologies, frameworks, servers and other components that are exposed by the target.
+
+### 📂 Content Discovery
+
+Find publicly accessible directories and files using Gobuster.
+
+### 🛡️ Vulnerability Scanning
+
+Use Nuclei to check the target against known vulnerability and security templates.
+
+### 🤖 AI Intelligence
+
+A local LLM is used to explain security findings, provide context and make the scanner output easier to understand.
+
+Aegis does not replace the underlying security tools. It works on top of them and helps interpret their results.
+
+### 📚 Learning Mode
+
+Learning Mode is aimed at students who want to understand security findings rather than just see a vulnerability name.
+
+For example, instead of only showing:
+
+```text
+Missing Security Header
+```
+
+Aegis can explain what the header does, why it matters and what should normally be done to fix the issue.
+
+### 📊 Investigation Timeline
+
+Each investigation has a timeline showing what Aegis is currently doing and what has already been completed.
+
+### 📄 Security Reports
+
+Investigation results can be compiled into a structured security report containing the target information, findings, evidence and recommendations.
+
+### 🗂️ Investigation History
+
+Previous investigations are stored so users can return to them and compare results later.
+
+---
+
+# 🛠️ Tech Stack
 
 ## Frontend
 
@@ -78,18 +126,25 @@ Generate Report
 
 * SQLite
 
+SQLite is being used for the first version to keep the setup simple. The database layer is designed so that it can be replaced with PostgreSQL later if needed.
+
 ## AI
 
-* Ollama (Local LLM)
+* Ollama
+* Local LLM
 
-## Security Tools (Version 1)
+Running the model locally keeps the AI portion of the project independent from a paid API during development.
+
+## Security Tools
+
+### Version 1
 
 * Nmap
 * WhatWeb
 * Gobuster
 * Nuclei
 
-### Planned Integrations
+### Planned
 
 **Version 2**
 
@@ -103,119 +158,147 @@ Generate Report
 
 **Version 4**
 
-* AWS Security Assessment
+* AWS security assessment tools
 
 ---
 
 # 📁 Project Structure
 
-```
+```text
 Aegis/
-
-README.md
-
-docs/
 │
-├── PRD.md
+├── README.md
 │
-├── SSD/
-│   ├── SSD_1_System_Architecture.md
-│   ├── SSD_2_Backend.md
-│   ├── SSD_3_Security_Engine.md
-│   ├── SSD_4_Database.md
-│   └── SSD_5_AI_Report.md
+├── docs/
+│   ├── PRD.md
+│   │
+│   ├── SSD/
+│   │   ├── SSD_1_System_Architecture.md
+│   │   ├── SSD_2_Backend.md
+│   │   ├── SSD_3_Security_Engine.md
+│   │   ├── SSD_4_Database.md
+│   │   └── SSD_5_AI_Report.md
+│   │
+│   └── UI/
+│       ├── Landing.md
+│       ├── Dashboard.md
+│       ├── Investigation.md
+│       ├── Case.md
+│       └── Report.md
 │
-└── UI/
-    ├── Landing.md
-    ├── Dashboard.md
-    ├── Investigation.md
-    ├── Case.md
-    └── Report.md
-
-frontend/
-
-backend/
+├── frontend/
+│
+└── backend/
 ```
 
 ---
 
-# 🎯 Version 1 Scope
+# 🎯 Version 1
 
-Version 1 focuses on delivering a complete cybersecurity investigation experience for publicly accessible websites.
+The first version is focused on website security assessments.
 
-Included:
+### Included
 
-* User Authentication
-* Project Management
-* Website Investigations
-* Investigation Timeline
-* AI Intelligence
+* User authentication
+* Project management
+* Website investigations
+* Investigation profiles
+* Investigation timeline
+* Security tool integration
+* AI-assisted explanations
 * Learning Mode
-* Professional Reports
-* Investigation History
+* Security reports
+* Investigation history
 
-Not Included:
+### Not Included Yet
 
-* Cloud Security
-* API Security
-* Team Collaboration
-* Mobile Application
-* Enterprise Features
+* Cloud security assessments
+* API security testing
+* Team collaboration
+* Mobile application
+* Enterprise features
+
+These can be added later once the core investigation workflow is stable.
 
 ---
 
-# 🚀 Development Roadmap
+# 🚧 Development Roadmap
 
-### Phase 1
+## Phase 1 — Documentation
 
-Documentation
+Set up the basic project documentation and define the architecture before implementation.
 
-* Product Requirements
-* System Design
-* UI Specifications
+* Product requirements
+* System architecture
+* Backend design
+* Database design
+* Security engine design
+* AI/reporting design
+* UI specifications
 
-### Phase 2
+## Phase 2 — Core Platform
 
-Core Platform
+Build the application around the investigation workflow.
 
 * Authentication
 * Dashboard
 * Projects
-* Investigations
+* Targets
+* Investigation creation
+* Investigation status tracking
+* Investigation history
 
-### Phase 3
+## Phase 3 — Security Engine
 
-Security Engine
+Integrate the initial security tools.
 
 * Nmap
 * WhatWeb
 * Gobuster
 * Nuclei
+* Tool execution management
+* Result parsing
+* Evidence storage
 
-### Phase 4
+## Phase 4 — AI
 
-AI Intelligence
+Add the local AI layer.
 
-* Explanations
+* Finding explanations
+* Security recommendations
 * Learning Mode
-* Report Generation
+* Investigation summaries
+* Report generation
 
-### Phase 5
+## Phase 5 — Polish & Deployment
 
-Polish
+Once the core functionality works:
 
-* Animations
-* Responsive UI
+* Improve the UI
+* Add animations where they actually help
+* Responsive design
 * Testing
+* Error handling
+* Security hardening
 * Deployment
+
+---
+
+# ⚠️ Responsible Use
+
+Aegis is intended for security testing on systems that you own or have explicit permission to assess.
+
+Do not use it to scan or test websites, servers, or infrastructure without authorization.
+
+The project is being developed primarily for learning, research and authorized security assessments.
 
 ---
 
 # 🤝 Contributing
 
-Aegis is designed as a modular cybersecurity platform.
+Aegis is being built as a modular project, so new security tools and features can be added without rewriting the entire application.
 
-Every contribution should follow the architecture and design principles documented in the `docs/` directory.
+If you want to contribute, check the documentation in `docs/` first, especially the system design documents, before making architectural changes.
 
 ---
 
@@ -225,8 +308,10 @@ This project is licensed under the MIT License.
 
 ---
 
-# ⭐ Vision
+## Why Aegis?
 
-Aegis is more than a vulnerability scanner.
+Most security tools are good at finding things. The difficult part, especially when you're learning, is understanding what those findings actually mean.
 
-It is an interactive cybersecurity investigation platform that helps users discover vulnerabilities, understand why they matter, learn how attackers exploit them, and confidently improve the security of their systems.
+Aegis is an attempt to put the investigation process into one place — run the tools, collect the results, understand the findings, and turn them into something useful.
+
+The long-term goal is to build a platform that can grow from a simple website assessment tool into a broader cybersecurity investigation platform.
