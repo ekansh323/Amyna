@@ -1,4 +1,4 @@
-#  Aegis (Amyna AI)
+#  Amyna AI
 
 > AI-assisted website security investigation platform.
 
