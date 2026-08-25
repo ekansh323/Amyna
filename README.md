@@ -1,4 +1,4 @@
-# 🛡️ Aegis (Amnya AI)
+# Aegis (Amnya AI)
 
 > **Know Your Attack Surface. Before Attackers Do.**
 
