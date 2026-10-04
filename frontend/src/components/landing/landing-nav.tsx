@@ -54,12 +54,12 @@ export function LandingNav() {
           </a>
         ))}
         <div className="flex items-center gap-3">
-          <Link href="/dashboard">
+          <Link href="/login">
             <Button variant="ghost" size="sm" className="text-sm">
               Sign In
             </Button>
           </Link>
-          <Link href="/dashboard">
+          <Link href="/register">
             <Button size="sm" className="text-sm">
               Get Started
             </Button>
@@ -93,7 +93,7 @@ export function LandingNav() {
                 {link.label}
               </a>
             ))}
-            <Link href="/dashboard">
+            <Link href="/register">
               <Button className="w-full mt-2" size="sm">Get Started</Button>
             </Link>
           </div>

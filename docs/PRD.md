@@ -1,232 +1,327 @@
-# 🛡️ Aegis
+# Aegis — Product Requirements Document
 
-> **Know Your Attack Surface. Before Attackers Do.**
-
-Aegis is an AI-assisted cybersecurity investigation platform that automates website security assessments using industry-standard security tools while transforming technical findings into understandable, actionable intelligence.
-
-Instead of presenting raw scanner outputs, Aegis guides users through an interactive investigation where vulnerabilities are discovered, explained, and remediated through a modern SaaS experience.
+**Version:** 1.0
+**Date:** October 2026
+**Status:** Active development
 
 ---
 
-# ✨ Features
+## 1. Product Overview
 
-* Interactive website security investigations
-* AI-assisted vulnerability explanations
-* Investigation timeline with live progress
-* Technology fingerprinting
-* Content discovery
-* Professional security reports
-* Educational Learning Mode
-* Investigation history
-* Modular architecture for future expansion
+### 1.1 What Is Aegis?
 
----
+Aegis is an AI-assisted cybersecurity investigation platform. It allows users to run security assessments against targets using industry-standard security tools, then uses a local AI model to transform raw technical findings into understandable, actionable intelligence.
 
-# 🔍 Investigation Workflow
+Aegis is NOT a simple vulnerability scanner. It is a full investigation workflow platform that combines:
+- Real security tooling (Nmap, WhatWeb, Gobuster, Nuclei)
+- AI-powered analysis and explanation
+- A learning-oriented interface that teaches *why* findings matter
+- Professional-grade reporting
+
+### 1.2 Core Investigation Flow
 
 ```
-Create Project
-        │
-        ▼
-Add Target
-        │
-        ▼
-Select Investigation Profile
-        │
-        ▼
-Start Investigation
-        │
-        ▼
-Reconnaissance
-        │
-        ▼
-Technology Fingerprinting
-        │
-        ▼
-Content Discovery
-        │
-        ▼
-Vulnerability Assessment
-        │
-        ▼
-Evidence Collection
-        │
-        ▼
-AI Intelligence
-        │
-        ▼
-Generate Report
+User defines Target
+        ↓
+Reconnaissance (Nmap, WhatWeb)
+        ↓
+Attack Surface Discovery (Gobuster)
+        ↓
+Vulnerability Assessment (Nuclei)
+        ↓
+Findings collected and normalized
+        ↓
+AI Explanation (Ollama)
+          - What was found
+          - Why it matters
+          - Attack scenario
+          - Remediation
+          - Learning resources
+        ↓
+Investigation Report
 ```
 
----
+### 1.3 Design Philosophy
 
-# 🛠️ Technology Stack
+Aegis must feel like a professional modern SaaS product. Design inspiration: Apple, Linear, Stripe, Vercel, Arc.
 
-## Frontend
+**Must avoid:**
+- Hacker terminal aesthetic
+- Matrix green color scheme
+- Excessive neon / dark hacker vibes
+- Kali Linux-style UI
+- Gratuitous animations in the application
 
-* Next.js
-* TypeScript
-* Tailwind CSS
-* Framer Motion
-
-## Backend
-
-* FastAPI
-* Python
-
-## Database
-
-* SQLite
-
-## AI
-
-* Ollama (Local LLM)
-
-## Security Tools (Version 1)
-
-* Nmap
-* WhatWeb
-* Gobuster
-* Nuclei
-
-### Planned Integrations
-
-**Version 2**
-
-* Burp Suite
-* ffuf
-
-**Version 3**
-
-* SQLMap
-* Nikto
-
-**Version 4**
-
-* AWS Security Assessment
+**Must have:**
+- Clean, high-information-density UI
+- Fast, responsive interactions
+- Clear visual hierarchy
+- Professional typography and color
+- Cinematic landing page (marketing)
+- Practical, focused application UI
 
 ---
 
-# 📁 Project Structure
+## 2. Target Users
 
-```
-Aegis/
+### Primary Users
 
-README.md
+| User Type                 | Needs                                                  |
+|---------------------------|--------------------------------------------------------|
+| Cybersecurity students    | Learn by doing, understand findings, get explanations  |
+| Security researchers      | Run real tools, get normalized output, document findings |
+| Developers (appsec)       | Scan their own apps, understand vulnerabilities         |
+| Junior penetration testers | Use professional tools with AI-guided understanding    |
+| Security professionals    | Efficient investigation workflow, exportable reports   |
 
-docs/
-│
-├── PRD.md
-│
-├── SSD/
-│   ├── SSD_1_System_Architecture.md
-│   ├── SSD_2_Backend.md
-│   ├── SSD_3_Security_Engine.md
-│   ├── SSD_4_Database.md
-│   └── SSD_5_AI_Report.md
-│
-└── UI/
-    ├── Landing.md
-    ├── Dashboard.md
-    ├── Investigation.md
-    ├── Case.md
-    └── Report.md
+### Non-Goals (V1)
 
-frontend/
-
-backend/
-```
+- Enterprise team collaboration
+- Managed/cloud scanning infrastructure
+- Mobile application scanning
+- API security assessment (deep)
+- AWS/cloud infrastructure assessment
 
 ---
 
-# 🎯 Version 1 Scope
+## 3. Product Areas
 
-Version 1 focuses on delivering a complete cybersecurity investigation experience for publicly accessible websites.
+### 3.1 Landing Page
 
-Included:
+**Purpose:** Marketing, storytelling, first impression.
 
-* User Authentication
-* Project Management
-* Website Investigations
-* Investigation Timeline
-* AI Intelligence
-* Learning Mode
-* Professional Reports
-* Investigation History
+**Requirements:**
+- Cinematic, scroll-driven experience
+- Visualize the investigation concept (target → workflow → intelligence)
+- Globe / attack-surface visualization that evolves with scroll
+- Clear CTA to sign up / sign in
+- Does NOT impact dashboard performance or complexity
 
-Not Included:
-
-* Cloud Security
-* API Security
-* Team Collaboration
-* Mobile Application
-* Enterprise Features
+**Status:** ✅ Implemented (static, frontend only)
 
 ---
 
-# 🚀 Development Roadmap
+### 3.2 Authentication
 
-### Phase 1
+**Purpose:** Secure, scoped user access.
 
-Documentation
+**Requirements:**
+- User registration with name, email, password
+- Email uniqueness enforced
+- Password hashing (bcrypt) — no plaintext storage
+- JWT-based authentication (7-day expiry by default)
+- Protected routes require valid JWT
+- Users can only access their own data
+- `/users/me` endpoint for session validation
+- Frontend login and register forms
+- JWT stored in localStorage
+- Auto-redirect on 401
 
-* Product Requirements
-* System Design
-* UI Specifications
-
-### Phase 2
-
-Core Platform
-
-* Authentication
-* Dashboard
-* Projects
-* Investigations
-
-### Phase 3
-
-Security Engine
-
-* Nmap
-* WhatWeb
-* Gobuster
-* Nuclei
-
-### Phase 4
-
-AI Intelligence
-
-* Explanations
-* Learning Mode
-* Report Generation
-
-### Phase 5
-
-Polish
-
-* Animations
-* Responsive UI
-* Testing
-* Deployment
+**Status:** 🔄 In Progress
+- ✅ Backend: register, login, JWT, bcrypt, protected endpoint
+- ✅ Frontend: login page connected to real API, register page exists
+- ⏳ Frontend: route protection middleware, auth context, logout
 
 ---
 
-# 🤝 Contributing
+### 3.3 Dashboard
 
-Aegis is designed as a modular cybersecurity platform.
+**Purpose:** Mission control — overview of all user activity.
 
-Every contribution should follow the architecture and design principles documented in the `docs/` directory.
+**Requirements:**
+- Show user's projects
+- Show recent investigations
+- Show recent findings (severity breakdown)
+- Security posture indicator
+- Quick actions (start new investigation)
+- Link to reports
+
+**Status:** ✅ Frontend UI implemented (mock data), ⏳ not connected to backend
 
 ---
 
-# 📜 License
+### 3.4 Projects
 
-This project is licensed under the MIT License.
+**Purpose:** Organize security work into named projects.
+
+**Requirements:**
+- Create / read / update / delete projects
+- Each project has: name, description, target(s), timestamps
+- Project belongs to a user — strict ownership enforcement
+- A project can contain multiple investigations
+- Project list and detail views
+
+**Status:** ✅ ORM model and DB table defined, ⏳ CRUD API endpoints not yet built (M4)
 
 ---
 
-# ⭐ Vision
+### 3.5 Investigations
 
-Aegis is more than a vulnerability scanner.
+**Purpose:** Represent a security assessment run against a target.
 
-It is an interactive cybersecurity investigation platform that helps users discover vulnerabilities, understand why they matter, learn how attackers exploit them, and confidently improve the security of their systems.
+**Requirements:**
+- An investigation belongs to a project
+- Target: domain, IP, or URL
+- Scan profile: defines which tools run (e.g., Quick, Standard, Deep)
+- Status lifecycle: `pending → running → completed | failed`
+- Timestamps: created, started, completed, duration
+- Results: technologies discovered, attack surface, tool outputs
+- Findings linked to investigation
+- AI analysis linked to investigation
+- Timeline view of events
+- Investigation detail page
+
+**Status:** ✅ ORM model defined, ✅ frontend detail page (mock), ⏳ CRUD API not built (M4), ⏳ engine not connected (M5)
+
+---
+
+### 3.6 Security Engine
+
+**Purpose:** Execute real security tools against targets.
+
+**Requirements:**
+- Modular design — each scanner has a clean, consistent interface
+- Tool adapters: Nmap, WhatWeb, Gobuster, Nuclei (V1)
+- No shell injection — tools executed via subprocess with controlled arguments
+- Each tool's output is parsed and normalized into Aegis's internal data model
+- Scan execution is backend-controlled (not triggered directly by user input)
+- Results stored as Findings in the database
+- Support for adding new tools without rewriting core engine
+
+**V1 Tools:**
+| Tool       | Purpose                        |
+|------------|--------------------------------|
+| Nmap       | Port scanning, service detection |
+| WhatWeb    | Technology fingerprinting      |
+| Gobuster   | Content/directory discovery    |
+| Nuclei     | Vulnerability template scanning |
+
+**Future Tools:** ffuf, Burp Suite, SQLMap, Nikto, AWS scanner
+
+**Status:** ⏳ Not implemented (M5)
+
+---
+
+### 3.7 AI Intelligence
+
+**Purpose:** Transform raw tool output into understandable security intelligence.
+
+**Requirements:**
+- Use local Ollama instance
+- Model configurable via `OLLAMA_MODEL` environment variable
+- AI must only analyze actual collected evidence — no invented findings
+- For each significant finding, AI generates:
+  - What was discovered
+  - Why it matters
+  - Potential impact
+  - Attack scenario
+  - Real-world context
+  - Remediation advice
+  - Learning resources / next steps
+- AI responses stored and linked to findings
+- AI must not be a black box — responses must be attributable to real evidence
+
+**Status:** ⏳ Not implemented (M6). Config (`OLLAMA_BASE_URL`, `OLLAMA_MODEL`) is in place.
+
+---
+
+### 3.8 Case / Finding Page
+
+**Purpose:** Tell the complete story of a single vulnerability.
+
+**Requirements:**
+- Dedicated page per finding
+- Structured as a narrative:
+  - Finding summary
+  - Evidence (raw tool output)
+  - Why it matters
+  - Attack scenario
+  - Real-world example
+  - Remediation steps
+  - Learning resources
+- Severity badge (Critical / High / Medium / Low / Info)
+- Link back to investigation
+
+**Status:** ✅ Frontend page exists (mock), ⏳ not connected to real findings
+
+---
+
+### 3.9 Reports
+
+**Purpose:** Generate professional security reports from investigations.
+
+**Requirements:**
+- Report is generated from an investigation's findings + AI analysis
+- Sections:
+  - Executive Summary
+  - Security Posture
+  - Technology Profile
+  - Attack Surface
+  - Findings (with severity, evidence, recommendations)
+  - Learning Resources
+  - Next Steps
+  - Appendix
+- Export formats: PDF, HTML, Markdown (future)
+
+**Status:** ✅ Frontend report page (mock), ⏳ report generation not implemented (M7)
+
+---
+
+## 4. Non-Functional Requirements
+
+### 4.1 Security
+
+| Requirement                                    | Status         |
+|------------------------------------------------|----------------|
+| Passwords hashed with bcrypt                   | ✅ Implemented |
+| No plaintext secrets in code                   | ⚠️ Dev secret in config.py — must override in prod |
+| JWT-protected endpoints                        | ✅ Implemented |
+| User data scoping (own projects only)          | ⏳ M4          |
+| No arbitrary command execution via user input  | ⏳ M5 (engine design) |
+| Input validation                               | ✅ Pydantic + email-validator |
+| CORS restricted in production                  | ⚠️ Currently `*` |
+
+### 4.2 Architecture
+
+| Requirement                           | Status         |
+|---------------------------------------|----------------|
+| SQLite for MVP                        | ✅ Implemented |
+| PostgreSQL-compatible ORM             | ✅ SQLAlchemy supports both |
+| Environment-based configuration       | ✅ pydantic-settings |
+| Modular security engine               | ⏳ M5          |
+| Docker support                        | ⏳ M9          |
+
+### 4.3 Performance
+
+- Backend API responses: < 200ms for non-scan endpoints
+- Scan operations run asynchronously (background tasks or queuing — M5)
+- Frontend: no unnecessary re-renders, fast page transitions
+
+### 4.4 Usability
+
+- All investigation pages readable without security expertise
+- AI explanations written in plain English
+- Error states are clear and actionable
+- Loading states shown during scans
+
+---
+
+## 5. Technical Constraints
+
+- Security tools must be installed on the host or container
+- AI requires local Ollama — no external AI API calls by default
+- SQLite cannot support concurrent writes at high load — acceptable for MVP/single-user
+- No team/multi-user collaboration in V1
+
+---
+
+## 6. Out of Scope (V1)
+
+- Team workspaces
+- Cloud infrastructure scanning
+- Burp Suite integration
+- Scheduled/automated scans
+- Webhooks or alerting
+- Mobile app
+- Enterprise SSO
+- Report templates / custom branding
