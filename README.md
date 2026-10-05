@@ -2,11 +2,6 @@
 
 **An AI-assisted cybersecurity investigation platform for discovering, understanding, and learning from security vulnerabilities.**
 
-[![Next.js](https://img.shields.io/badge/Next.js-TypeScript-black?logo=next.js)](https://nextjs.org/)
-[![FastAPI](https://img.shields.io/badge/FastAPI-Python-009688?logo=fastapi)](https://fastapi.tiangolo.com/)
-[![SQLite](https://img.shields.io/badge/Database-SQLite-003B57?logo=sqlite)](https://www.sqlite.org/)
-[![Ollama](https://img.shields.io/badge/AI-Ollama-black)](https://ollama.com/)
-[![Docker](https://img.shields.io/badge/Docker-Planned-2496ED?logo=docker)](https://www.docker.com/)
 
 Amyna is a cybersecurity investigation platform that brings reconnaissance, security tooling, vulnerability analysis, and AI-assisted explanations into one workflow.
 
